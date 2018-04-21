@@ -1,0 +1,643 @@
+/*
+Theme Name: TAF Divi Child 2016
+Version: 1.0
+Description: Child theme for ElegantThemes "Divi"
+Author: Canton Becker
+Author URI: http://cantonbecker.com
+Template: Divi
+*/
+
+/*** Hacks to Divi parent theme (if any) noted below
+
+***/
+
+/*** Child changes to Divi theme
+
+header.php   	Manually inserted ubermenu code as per http://sevenspark.com/docs/ubermenu-3/theme-integration/divi
+comments.php 	Forcibly restrict comment to in-asia posts
+footer.php 		Remove branding
+sidebar.php 	Switch out sidebars depending on post type
+
+***/
+
+@import url("../Divi/style.css");
+
+@font-face {
+    font-family: 'taf_open_sans';
+    src: url('/images/taf_open_sans-webfont.woff2') format('woff2'),
+         url('/images/taf_open_sans-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+/* set class to .taficons to enable these extra symbols:
+¡ Strengthen Governance
+§ Empower Women
+£ Expand Economic Opportunity
+¶ Increase Environmental Resilience
+¢ Promote International Cooperation
+*/
+
+.taficons { font-family: 'taf_open_sans', Helvetica, Arial, Lucida, sans-serif;	font-weight: normal;}
+
+.container { width: 90%; } /* Less big margins all around
+
+
+/* customize ET menus */
+/* div#et-top-navigation { padding-left: 0 !important; } */ /* override inline padding on menu */
+/* hide ET's hamburger */
+div#et-top-navigation div#et_mobile_nav_menu { display: none; } 
+
+@media only screen and (min-device-width: 561px) {
+ #logo {  max-height: 32px !important; } 
+ #logo {  max-width: 232px !important; } 
+}
+
+@media only screen and (max-device-width: 560px) {
+ #logo {  max-height: 23px !important; } 
+ #logo {  max-width: 170px !important; } 
+}
+
+#‎logo‬ { -webkit-transform: inherit; }
+
+.et_header_style_left div.logo_container{
+    position:relative;
+    padding:20px 0;
+    width:auto;
+    height:auto;
+    float:left;
+}
+
+
+
+/* UberMenu Dropdown Menus */
+ .ubermenu .ubermenu-custom-content a { color: #424242; } /* Override blue links in dropdown nav */
+ .ubermenu .ubermenu-item-layout-image_left > .ubermenu-target-text { padding-left: 0 !important; } /* Don't indent text under images */
+
+.ubermenu-main .ubermenu-target > .ubermenu-target-description, .ubermenu-main .ubermenu-submenu .ubermenu-target > .ubermenu-target-description {
+    line-height: 1.3em;
+}
+
+/* Spacing Throughout */
+
+/* General vertical spacing between rows reduced to 1% */
+/*
+#main-content .entry-content .et_section_regular .et_pb_row { padding: 1% 0; } 
+*/
+
+#newsPage .et_pb_row_0 {    padding-bottom: 0;    padding-top: 0; } /* Don't add spacing between infinite loads */
+
+/* Apply this to a divi SECTION to reduce excessive padding on mobile. */
+.noColumnSpacingOnMobile .et_pb_column, .noColumnSpacingOnMobile .et_pb_row_inner { margin-bottom: 0; }
+@media (max-width: 980px) {
+	.noColumnSpacingOnMobile { padding: 0 0; }
+}
+/* White subnav inside of headers */
+
+ul.headerSubNav { margin: 10px 0 0 0; padding: 0; text-align: center; }
+ul.headerSubNav li::before {  }
+ul.headerSubNav li { display: inline-block; list-style: none; margin: 0 10px; font-size: 15px; font-weight: bold; text-transform: uppercase; line-height: 18px;}
+ul.headerSubNav li a { color: #FFFFFF; }
+ul.headerSubNav li a:hover { text-decoration: underline; }
+ul.headerSubNav li strong { text-decoration: underline; }
+
+/* Body Content */
+#main-content .et_pb_text ul li { padding-bottom: .5em; list-style: square;  } 
+
+.et_pb_post .entry-content {
+    padding-top: 0; /* Reduce padding between meta and body on single video pages etc */
+}
+
+small { font-size: 14px; line-height: 1em; color: #8F807D; }
+
+.nopadding { padding: 0; }
+
+a:hover { color: #2051A0; }
+	
+p:last-of-type { padding-bottom: 1em; } /* Restore padding beneath final paragraphs */
+
+.textShadow { text-shadow: -1px -1px 3px rgba(0, 0, 0, 1); }
+
+.darkBack { background-color: rgba(0, 0, 0, 0.6); }
+.darkback { background-color: rgba(0, 0, 0, 0.6); padding: 20px;} /* From old annual report style */
+
+.darkBackHeadline {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 6px solid #ffffff;
+    display: inline-block;
+    padding: 20px 20px 10px 20px;
+    text-transform: uppercase;
+}
+
+.darkBackViews {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 6px solid #ffffff;
+    display: inline-block;
+    padding: 20px 20px 10px 20px;
+    text-transform: uppercase;
+}
+
+/*** Annual Report Styles ***/
+/* list of countries, programs for 2016 AR */
+.reportList::before {  }
+ul.reportList { padding: 0; text-align: center; }
+ul.reportList li::before {  }
+ul.reportList li { display: inline-block; list-style: none; background-color: #7e0c6e; border: solid 1px #7E0C6E; border-radius: 4px; margin:10px; padding: 4px 8px; text-transform: uppercase;}
+ul.reportList li a:hover { text-decoration: underline; }
+ul.reportList li strong { text-decoration: underline; }
+
+
+.slidesDarkBackText h2, .darkBackHeadlineSlider h2 {
+	/* background-color: rgba(0, 0, 0, 0.5); */
+    display: inline-block;
+    font-size: 2.4em !important;
+    font-weight: 400 !important;
+    line-height: 1.3em !important;
+    padding: 16px;
+	font-family: "taf_open_sans", "Open Sans",​Helvetica,​Arial; 
+}
+
+h3.taficons { letter-spacing: .03em; }
+
+ul.reportNav { margin-left: 1.35em; }
+
+@media only screen and (min-width: 560px) { /* on desktops, display list items inline with bullets afterwards */
+	ul.reportNav li { display: inline; list-style: none; color: #888; } 
+	ul.reportNav li::after { content: " | " ; }
+	ul.reportNav li:last-child:after { content: "" ; }
+}
+ul.reportNav li a { color: #d5c1d6;}
+ul.reportNav li a:hover { color: #ffffff;}
+
+.annualReportSubnav h4, .annualReportSubnav h4 a { color: #FFFFFF; }
+.annualReportSubnav h4 a:hover { color: #FFFFFF; text-decoration: underline; }
+span.oneicon { display: inline-block; width: 1.5em; }
+
+/* Subnav for pages like afghanistan survey section */
+#main-content .et_pb_text ul.subNav { margin: 0; padding: 0; }
+#main-content .et_pb_text ul.subNav > li:first-child { padding-left: 0; }
+#main-content .et_pb_text ul.subNav > li:last-child { padding-right: 0; }
+#main-content .et_pb_text ul.subNav li { list-style: none; }
+
+/* Inline for tablet & desktop */
+@media only screen and (min-device-width: 560px) {
+	#main-content .et_pb_text ul.subNav li { display: inline-block; margin: 0; padding: 3px 15px 0 15px; }
+}
+
+.greyBackSection a:hover { text-decoration: underline; } /* Hover underlines when on a grey background */
+
+.centeredTitle {
+	text-align: center;
+}
+
+h1.searchHeader { text-transform: uppercase; margin-bottom: 10px; } /* E.g. /latest-by-location/?wpvcountries=Afghanistan */ 
+
+.et_pb_column_2_3 .et_pb_blurb_position_left .et_pb_blurb_content { float:left; } /* So blurb content isn't floating in middle of a 2/3rds column */
+.et_pb_column_4_4 .et_pb_blurb_position_left .et_pb_blurb_content { float:left; } /* So blurb content isn't floating in middle of a 2/3rds column */
+
+div.relatedStuff { margin-top: 10px; }
+div.relatedStuff strong.wider { width: 25em; }
+div.relatedStuff strong { display: inline-block; color: #8f807d; text-transform: uppercase; font-size: 12px; width: 12em; }
+
+/* Posts */
+h1.entry-title { line-height: 1.2em; }
+p.dateMeta { padding-bottom: .5em; }
+p.authorMeta { padding-bottom: .5em; }
+span.entryCityDate { font-weight: bold; color: #777; }
+
+div.singleSocial { padding: 10px 0 20px 0; }
+	
+/* Project Lists */
+
+ul.projectList { margin-top: 20px; }	
+ul.projectList li { padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #EEEEEE; }	
+ul.projectList li div.extraInfo { font-size: .9em; }	
+ul.projectList li div.extraInfo strong {   text-transform: uppercase; font-size: .9em; color: #8F807D; }	
+ul.projectList li div.extraInfo p { display: inline; padding: 0; margin: 0; }	
+
+/* Advanced Search Form */
+div.advancedSearch { border-bottom: 1px solid #CCCCCC; margin-bottom: 20px; padding-bottom: 20px; }
+
+input.sf-input-text { width: 10em; font-weight: bold; font-size: 14px; color: #1F86C3;}
+li.sf-field-submit input { color: #1F86C3; font-size: 14px;}
+
+
+li.sf-field-search { display: inline-block !important; margin-right: 5px !important; }
+li.sf-field-submit { display: inline-block !important; }
+
+
+div.advancedSearch input[type=text] { font-size: 1.1em; font-weight: bold; }
+div.advancedSearch span { display: inline-block; width: 8em; font-size: 12px; }
+div.searchChoices { display: inline; font-size: .9em; text-transform: uppercase; }
+
+div.searchResultCount { margin-bottom: 20px; text-transform: uppercase; font-size: .9em; color: #8F807D; } 
+div.searchResultCount span { font-weight: bold; } 
+
+span.sf-date-prefix { display: inline-block; width: 4em; font-size: 13px; text-transform: uppercase; }
+ul.sf_date_field { padding: 0; }
+input.sf-datepicker { width: 10em; }
+
+/* Advanced Search Results */
+div.searchCount { margin-bottom: 30px; }
+div.searchCount h4 { font-weight: 400; text-transform: uppercase; }
+
+div.searchResult { clear: both; margin-bottom: 20px; }
+.searchResult h4 { font-size: 1.1em;}
+.searchResult .searchText p.cityDate { text-transform: uppercase; font-size: .9em; font-weight: normal; color: #8F807D; padding-bottom: 5px; line-height: 1em;}
+.searchResult .searchText p.postType { text-transform: uppercase; font-size: .9em; font-weight: bold; color: #8F807D; padding-bottom: 5px; line-height: 1em; }
+.searchResult .searchText p.categoryName { font-weight: bold; color: #8F807D; padding-bottom: 0; text-transform: uppercase; font-size: .9em;}
+.searchResult .searchText div.postExcerpt { margin: 0; padding-bottom: 10px; font-size: .9em; line-height: 1.3em;} 
+
+@media only screen and (min-width: 560px) {
+.searchResult .searchThumb { float: left; width: 200px; }
+.searchResult .searchThumb img { width: 200px; }
+.person .searchThumb img { width: 100px; }
+.searchResult .searchText { margin-left: 220px; }
+
+}
+
+/* Captions */
+p.wp-caption-text { text-align: justify; line-height: 1.1em;  } 
+
+
+/* Popups */
+@media only screen and (max-width: 560px) {
+	.lbx_content { left: 5% !important; width: 90% !important; }
+}
+
+/* Pullquotes -- use [pullquoteright]blah blah blah[/pullquoteright] to insert */
+
+@media only screen and (max-width: 560px) {
+	.pulled-right, .pulled-left { display: none !important; } /* No pullquotes on mobile */
+}
+
+.pulled-right, .pulled-left {
+	width: 280px;
+	font-size: 1.4em;
+	font-style: italic;
+	line-height: 1.4em;
+	color: #333333;
+	display: block;
+	text-align: left;
+}
+
+.pulled-right {
+	float: right;
+	padding: 0 0 0 10px;
+	margin: 0 0 10px 20px;
+	border-left: 5px solid #333333;
+}
+
+.pulled-left {
+	float: left;
+	padding: 0 10px 0 0;
+	margin: 0 20px 10px 0;
+	border-right: 5px solid #333333;
+}
+
+.pulled-right a, .pulled-left a, .pulled-right a:visited, .pulled-left a:visited,
+.pulled-right b, .pulled-left b, .pulled-right strong, .pulled-left strong {
+	text-decoration: none;
+	color: #777777;
+	font-weight: normal;
+}
+
+
+/* Events Listing */
+#eventsListing .event { margin-bottom: 10px; }
+
+/* In Asia "more" page */
+p.byLine { font-size: .9em; padding-bottom: 0; }
+h4.inAsia { padding-bottom: 0; }
+/* People Page */
+.headshot img { float: right; margin: 0 0 10px 20px; }
+
+/* Publications */
+div.publicationThumb {
+	margin: 10px 0;
+}
+@media only screen and (min-width: 970px) { /* Equalize height on big screens */
+	div.publicationLandingThumb { height: 370px; }
+}
+
+/* Multimedia Landing Page */
+div.featuredMultimedia { text-align: center; }
+div.featuredMultimedia img { border: 1px solid #DDDDDD; }
+div.featuredMultimedia span {   text-transform: uppercase; font-size: .9em; font-weight: normal; color: #FFFFFF; display: block; padding-bottom: 5px; }
+div.featuredMultimedia p { font-size: 14px; font-weight: bold; text-align: center; line-height: 18px; }
+div.featuredMultimedia a { color: #FFFFFF; }
+
+@media only screen and (min-device-width: 560px) { /* Equalize height on big screens */
+	div.multimediaLandingThumb { height: 205px; }
+}
+
+
+/* Slideshows */
+div.galleria-info-title { display: none !important; } /* Don't show titles */
+.ngg-trigger-buttons { font-size: 12px !important; } /* Bigger zoom icon */
+
+/* Use text instead of share icon */
+@media only screen and (min-device-width: 560px) { 
+	.fa-share-square::before { content: "FULL SCREEN ▸" !important; }
+}
+
+@media only screen and (max-device-width: 560px) {
+	.fa-share-square::before { content: "VIEW SLIDESHOW ▸" !important; } /* On mobile make it seem like this is the only way to see it */
+	div.galleria-info div.galleria-info-text div.galleria-info-description { font-size: 12px; line-height: 14px; font-weight: normal; }
+}
+
+div.galleria-info-text { padding-left: 0 !important; }
+
+div.ngg-trigger-buttons { text-align: left; margin-top: 5px !important; }
+div.ngg-trigger-buttons i.fa.ngg-trigger.nextgen_pro_lightbox.fa-share-square {margin-left: 0 !important;}
+div.ngg-trigger-buttons { border-bottom: 1px solid #cccccc; margin-bottom: 15px; padding-bottom: 5px; }
+
+.fa-share-square { font-size: 12px !important; font-weight: bold !important; color: #FFFFFF !important; 
+					background-color: #0075bb !important; padding: 4px 6px !important;  
+					font-family: "Open Sans",​Helvetica,​Arial !important; margin-top: 5px !important; } 
+
+.galleria-info { text-align: left !important; }
+div.galleria-counter { display: none; } /* No counter */
+
+/* div.galleria-container { border: 1px solid #cccccc; } */ /* Border around entire slideshow */
+
+
+
+/* Link colors on dark backgrounds */
+.et_pb_bg_layout_dark a { color: #FFFFFF; }
+/* .et_pb_bg_layout_dark a { color: #c2efef; } */
+
+
+
+/* People Pages */
+
+.peoplePage h1 { text-transform: uppercase; font-weight: normal; letter-spacing: .02em; }
+
+ul.peopleList { margin: 0 !important; padding: 0 !important; list-style: none; }
+ul.peopleList li { margin: 0; padding: 0 0 10px 0; }
+
+.peopleGridSection h2 { padding-bottom: 20px; }
+
+div.peopleGrid { text-align: center; margin: 0; padding: 0;}
+div.peopleGrid h2 { padding-bottom: 40px; }
+
+ul.peopleGrid4 { margin: 0 !important; padding: 0 !important; list-style: none;}
+ul.peopleGrid4 li { line-height: 16px; text-align: center; margin: 0; padding: 0 10px; width: 240px; display:inline-block; vertical-align: top;}
+ul.peopleGrid4 li span { display: block; font-size: .8em; }
+ul.peopleGrid4 li span a { color: #514644; }
+ul.peopleGrid4 li span a:hover { color: #2051A0; }
+ul.peopleGrid4 div.personPicture img { width:100%; max-width:129px; }
+
+@media only screen and (min-device-width: 560px) { /* Equalize height on big screens */
+	ul.peopleGrid4 div.personPicture { height: 200px; }
+	ul.peopleGrid4 li { height: 295px; }
+}
+@media only screen and (max-device-width: 560px) {
+	ul.peopleGrid4 div.personPicture { padding-top: 20px; }
+}
+
+
+ul.peopleGrid6 { margin: 0 !important; padding: 0 !important; list-style: none; }
+ul.peopleGrid6 li { line-height: 16px; text-align: center; margin: 0; padding: 0 10px; width: 151px; display:inline-block; vertical-align: top; }
+ul.peopleGrid6 li span { display: block; font-size: .8em; }
+ul.peopleGrid6 li span a { color: #514644; }
+ul.peopleGrid6 li span a:hover { color: #2051A0; }
+ul.peopleGrid6 div.personPicture img, ul.peopleGrid6 div.personPictureNoTitle img { width:100%; max-width:100px; }
+
+
+@media only screen and (min-device-width: 560px) { /* Equalize height on big screens */
+	ul.peopleGrid6 div.personPicture { height: 175px; }
+	ul.peopleGrid6 div.personPictureNoTitle { height: 160px; }
+	ul.peopleGrid6 li { height: 285px; }
+	ul.peopleGrid6 li.noTitle { height: 240px; }
+}
+@media only screen and (max-device-width: 560px) {
+	ul.peopleGrid6 div.personPicture { padding-top: 20px; }
+}
+
+ul.peopleList li { font-size: .8 em; line-height: 18px; }
+ul.peopleList li a { color: #514644; }
+
+
+
+/* Buttons */
+.otw-blue { background-color: #0075BB !important; }
+.otw-silver { background-color: #C8C8C8 !important; }
+.otw-button { background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.15)) !important; }
+
+.form-submit {
+    float: left;
+}
+
+/* Twitter widget */
+div.widget-easy-twitter-feed-widget-global-wrapper { text-align: center; }
+
+
+/* AddToAny Sharing. https://www.addtoany.com/buttons/customize/ */
+/* .addtoany_share_save_container { text-align:right; } */
+
+.a2a_svg, .a2a_count { border-radius: 0 !important; } /* Square buttons */
+.addtoany_list a { padding: 0 1px !important; }
+
+/*** Subpages Sidebar Widget ***/
+.widget_subpages h4.widgettitle { color: #666666; text-transform: uppercase; letter-spacing: .01em; font-size: .9em; }
+.widget_subpages li { color: #666666; text-transform: uppercase;  font-size: .8em; }
+
+/* Fixes how sidebar widgets added into Divi layouts were only 50% wide */
+.fullWidth .et_pb_widget.widget_text { width: 95%; }
+
+/* Navigation at the bottom of posts */
+ul.navigationLinks { margin: 20px 0 0 0; padding: 0;}
+ul.navigationLinks li { list-style: none !important; }
+p.navigationLinks { margin-top: 15px;}
+ul.navigationLinks span {   text-transform: uppercase;
+  font-size: .8em; font-weight: normal;
+  color: #8F807D;
+  display: block;
+}
+
+@media only screen and (min-device-width: 560px) { /* Float thumb right on large screens */
+ul.navigationLinks li { display: inline-block; float: left; width: 50%; }
+ul.navigationLinks p.previousLink { padding-right: 10px; }
+ul.navigationLinks p.nextLink { padding-left: 10px; }
+}
+/*** Related / Featured / News Content Lists ***/
+
+ul.viewList {
+  padding: 0 !important;
+}
+
+ul.viewList li {
+  list-style: none !important;
+  margin: 0;
+  padding: 0 0 1em 0;
+  clear: left;
+  line-height: 1.2em;
+  font-size: 14px;
+}
+
+ul.viewList div.postExcerpt { font-size: 14px; margin: 5px 0;}
+ul.viewList div.readMore { font-size: 14px; margin-bottom: 20px; }
+ul.viewList div.readMore a { color: #0075bb; }
+
+ul.viewList { font-size: 125%; font-weight: 400; }
+
+ .paginationTop { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eeeeee; }
+ .paginationBottom { margin-top: 10px; padding-top: 10px; border-top: 1px solid #eeeeee;}
+ .viewPagination { font-size: 15px; }
+ 
+@media only screen and (min-device-width: 560px) {
+
+  ul.viewList li img {
+	width: 145px;
+	height: 90px;
+  }
+  
+  ul.viewList li span {
+	float: left;
+	width: 160px;
+	/* height: 115px; */
+	height: 150px;
+  }
+
+  ul.viewList li .publicationStyle img {
+	  width: 140px;
+	  height: auto;
+  }
+
+  ul.viewList li span.publicationStyle {
+	height: 220px;
+  }
+
+
+  ul.viewList li.withExcerpts span {
+	height: 155px;
+  }
+
+ .viewPagination { margin-left: 160px; }
+    
+}
+
+@media only screen and (max-device-width: 560px) {
+  ul.viewList li {
+	margin-top: 15px !important;
+  }
+
+  ul.viewList li span {
+	display: block; padding-bottom: 10px;
+  }
+}
+
+ul.viewList li strong {
+  text-transform: uppercase;
+  font-size: .9em; font-weight: normal;
+  color: #8F807D;
+  display: block;
+  padding-top: 5px;
+}
+
+ul.viewList li em {
+  font-weight: bold;
+  font-style: normal;
+  color: #8F807D;
+}
+
+ul.viewList li a {
+  color: #232323;
+}
+
+ul.viewList li a:hover {
+  color: #075EB3;
+}
+
+ul.viewList li div.byline {
+	font-size: .9em;
+	/* padding-bottom: 5px; */
+}
+
+
+ul.viewListThumbsAbove img {
+	display: block;
+	padding-bottom: 10px;
+}
+ul.viewListThumbsAbove li {
+	padding: 15px 0;
+	border-bottom: 1px solid #EEEEEE;
+	font-size: .9em; 
+	line-height: 1.1em;
+}
+
+ul.viewListThumbsAbove li strong {
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #8F807D;
+  font-size: .9em;
+}
+
+ul.viewListThumbsAbove li div.byline {
+  font-size: .9em;
+}
+
+ul.viewListThumbsAbove li em {
+  font-weight: bold;
+  font-style: normal;
+  color: #8F807D;
+}
+
+ul.viewListThumbsAbove li a {
+  color: #232323;
+}
+
+ul.viewListThumbsAbove li a:hover {
+  color: #075EB3;
+}
+
+ul.viewListThumbsAbove li div.postName { margin: 0 0 5px 0; padding: 0; }
+
+
+/* NEWS and EVENTS PAGES */
+#newsPage p.cityDate { text-transform: uppercase; font-size: .9em; font-weight: normal; color: #8F807D; padding-bottom: 0;}
+#newsPage p.categoryName { font-weight: bold; color: #8F807D; padding-bottom: 0; text-transform: uppercase; font-size: .9em;}
+#newsPage div.postExcerpt p { margin: 0; padding-bottom: 0;} 
+
+#newsPage h2 { margin: 0; padding: 0; }
+#newsPage .et_pb_code { margin-bottom: 0; }
+
+/* SEARCH PAGE */
+
+div.searchResults h2 { font-weight: normal; margin: 0; padding: 0 0 10px 0; }
+div.searchResults h2 span { color: #000; } 
+
+div.searchResults table, div.searchResults td, div.searchResults tr { border: none !important; padding: 0 !important; margin: 0 !important; }
+
+/*** FOOTER ***/
+
+#footerSocial {  }
+.et-social-icons li a.icon { font-size: 35px; font-weight: normal; padding-bottom: 10px;} /* Bigger social icons */
+
+/* Remove bullets and list padding on widgets */
+#footer-widgets .footer-widget li:before { display: none; } 
+#footer-widgets .footer-widget .et_pb_widget:not(.woocommerce) ul li { padding-left: 0px; }
+
+.et-social-google-plus a.icon:before { /* re-purpose google+ for linked in */
+	content: "\e09d";
+}
+
+/* Timeline Page */
+
+.page-id-176 #main-content .container::before { /* Weird grey line in middle of text */
+    width: 0;
+}
+
+
+/* Text Styling */
+#main-footer #footer-widgets .footer-widget h4 { text-transform: uppercase; letter-spacing: .01em; font-size: 1em; }
+#main-footer a:hover { color: #610355 !important; }
+
+
+/* Hide title on ET 'advertising' widget */
+#footer-widgets .widget_advwidget h4.title { display: none; } 
+
+/* Copyright notice */
+#footer-bottom p#footer-info { font-size: .8em; }
+
